@@ -71,4 +71,9 @@ int main(){
         }
         printf("\n");
     }
+
+    printf("The solution of the given system is: ");
+    for(i = 0; i< n; i++){
+        printf("X[%d] = %.2f\t", i+1, matrix[i][n]);
+    }
 }
