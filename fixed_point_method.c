@@ -24,7 +24,6 @@ int main(){
         x4 = f(x3);
         error = find_error(x3, x4);
         x3 = x4;
-        printf("%f\n", error);
     }
 
     // printing the root of the equation 
