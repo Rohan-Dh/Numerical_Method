@@ -13,25 +13,35 @@ int main()
     float y[interval + 1];
     printf("Enter the upper and lower limit (U-L): ");
     scanf("%f%f", &u_lim, &l_lim);
+
+    printf("x\ty\n");
     h = (u_lim - l_lim) / interval;
     x = l_lim;
     y[0] = f(l_lim);
-    while (x < u_lim){
+    printf("%.2f\t%.2f\n", x, y[0]);
+
+    while (x < u_lim)
+    {
         y[i] = f(x + h);
+        printf("%.2f\t%.2f\n", x + h, y[i]);
         x += h;
         i++;
     }
+
     sum = y[0] + y[interval];
-    for (i = 1; i < interval; i++){
-        if (mode == 0){
+    for (i = 1; i < interval; i++)
+    {
+        if (mode == 0)
+        {
             sum += 2 * y[i];
             mode += 2;
         }
-        else{
+        else
+        {
             sum += 3 * y[i];
             mode -= 2;
         }
     }
-    result = (3*h / 8) * sum;
+    result = (3 * h / 8) * sum;
     printf("The area under the given point of the curve is %.2f", result);
 }

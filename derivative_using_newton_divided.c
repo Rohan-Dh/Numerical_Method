@@ -1,66 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
+// #include<stdio.h>
 
-// Define a structure to represent a data point (x, y)
-typedef struct
-{
-    float x;
-    float y;
-} DataPoint;
+// int main(){
+//     int n, i, j, k, count = 0;
+//     printf("Enter the total number of data points: ");
+//     scanf("%d", &n);
 
-float compute_derivative(DataPoint data_points[], int num_points, float x)
-{
-    float divided_difference[num_points][num_points];
+//     float data[n][n + 1], delta[n - 1], x, sum = 0, product = 1;
+//     printf("Enter the data points below.\n");
+//     for(i = 0; i<n; i++){
+//         printf("(x%d, y%d): ", i+1, i+1);
+//         scanf("%f%f", &data[i][0], &data[i][1]);
+//     }
+//     // calculating didided difference table
 
-    // Initialize divided differences with y values
-    for (int i = 0; i < num_points; i++){
-        divided_difference[i][0] = data_points[i].y;
-    }
+//     for(i = 2; i < n+1; i++){
+//         count = i - 1; 
+//         for(j = 0; j < n - i + 1; j++){
+//             data[j][i] = (data[j + 1][i - 1] - data[j][i - 1]) / (data[j+count][0] - data[j][0]);
+//         }
+//     }
 
-    // Computing divided differences
-    for (int j = 1; j < num_points; j++){
-        for (int i = 0; i < num_points - j; i++){
-            divided_difference[i][j] = (divided_difference[i + 1][j - 1] - divided_difference[i][j - 1]) /
-                                       (data_points[i + j].x - data_points[i].x);
-        }
-    }
+//     for (i = 2; i < n + 1; i++){
+//         delta[i-2] = data[0][i];
+//     }
 
-    // Computing the derivative at x
-    float result = 0;
-    for (int i = 0; i < num_points; i++)
-    {
-        float term = divided_difference[i][i];
-        for (int j = 0; j < i; j++)
-        {
-            term *= (x - data_points[j].x);
-        }
-        result += term;
-    }
+//     printf("Enter the point you want to find the derivative on: ");
+//     scanf("%.2f", &x);
 
-    return result;
-}
-
-int main()
-{
-    int num_points;
-    printf("Enter the number of data points: ");
-    scanf("%d", &num_points);
-
-    DataPoint data_points[num_points];
-
-    printf("Enter the data points (x, y):\n");
-    for (int i = 0; i < num_points; i++){
-        printf("Point %d: ", i + 1);
-        scanf("%f%f", &data_points[i].x, &data_points[i].y);
-    }
-
-    float x;
-    printf("Enter the value of x at which to compute the derivative: ");
-    scanf("%f", &x);
-
-    // Compute the derivative at the given x value
-    float derivative = compute_derivative(data_points, num_points, x);
-    printf("The derivative at x = %.2lf is: %.2lf\n", x, derivative);
-
-    return 0;
-}
+//     for(i = 0; i < n-1; i++){
+//         count = i +1;
+//         for(j = 0; j <= count; j++ ){
+//             product 
+//         }
+//     }
+// }

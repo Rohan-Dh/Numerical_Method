@@ -5,32 +5,40 @@ int main()
     printf("Enter the order of square matrix: ");
     scanf("%d", &n);
 
-    float matrix[n][2*n], temp, root[n];
+    float matrix[n][2 * n], temp, root[n];
     printf("Enter the element inside the matrix below: \n");
-    for (i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
+    for (i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
             printf("A[%d][%d]: ", i, j);
             scanf("%f", &matrix[i][j]);
         }
     }
-    for(i = 0; i<n; i++){
-        for(j = n; j<(2*n); j++){
-            if(j-i == n){
+    for (i = 0; i < n; i++)
+    {
+        for (j = n; j < (2 * n); j++)
+        {
+            if (j - i == n)
+            {
                 matrix[i][j] = 1;
-            }else{
+            }
+            else
+            {
                 matrix[i][j] = 0;
             }
         }
     }
 
     printf("The provided Augmented matrix is: \n");
-    for (i = 0; i < n; i++){
-        for (int j = 0; j < 2*n; j++){
+    for (i = 0; i < n; i++)
+    {
+        for (int j = 0; j < 2 * n; j++)
+        {
             printf("%.2f\t", matrix[i][j]);
         }
         printf("\n");
     }
-
 
     for (i = 0; i < n; i++)
     {
@@ -40,7 +48,7 @@ int main()
             {
                 if (matrix[j][i] != 0)
                 {
-                    for (k = 0; k < 2*n; k++)
+                    for (k = 0; k < 2 * n; k++)
                     {
                         float temp;
                         temp = matrix[i][k];
@@ -59,7 +67,7 @@ int main()
         {
             j = i;
             temp = matrix[i][i];
-            while (j < 2*n)
+            while (j < 2 * n)
             {
                 matrix[i][j] = matrix[i][j] / temp;
                 j++;
@@ -69,7 +77,7 @@ int main()
         for (j = i + 1; j < n; j++)
         {
             temp = matrix[j][i];
-            for (k = i; k < 2*n; k++)
+            for (k = i; k < 2 * n; k++)
             {
                 matrix[j][k] = matrix[j][k] - (temp * matrix[i][k]);
             }
@@ -81,7 +89,7 @@ int main()
         for (j = i - 1; j >= 0; j--)
         {
             temp = matrix[j][i];
-            for (k = i; k < 2*n; k++)
+            for (k = i; k < 2 * n; k++)
             {
                 matrix[j][k] -= temp * matrix[i][k];
             }
@@ -91,7 +99,18 @@ int main()
     printf("After solving the Augmented matrix: \n");
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < 2*n; j++)
+        for (int j = 0; j < 2 * n; j++)
+        {
+            printf("%.2f\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n--------------------------------\n");
+    printf("The inverse of the provided matrix is\n");
+    for (i = 0; i < n; i++)
+    {
+        for (j = n; j < 2 * n; j++)
         {
             printf("%.2f\t", matrix[i][j]);
         }
